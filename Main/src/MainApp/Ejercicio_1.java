@@ -46,17 +46,21 @@ public class Ejercicio_1 {
 				for (String str : querysCreating) {
 					SqlTools.createTable(str, conn);
 				}
-
+				// Se crea una tupla.	
 				String queryAddTuple = "INSERT INTO `fabricantes` VALUES " + "(1,'Fabricante_1'),"
 						+ "(2,'Fabricante_2')" + ",(3, 'Fabricante_3')" + ",(4,'Fabricante_4') "
 						+ ",(5, 'Fabricante_5');";
+				// Se ejecuta la creación de la tupla.
 				SqlTools.createTuple(queryAddTuple, conn);
 
+				// Se crea otra tupla.
 				queryAddTuple = "INSERT INTO `articulos` VALUES " + "(1,'Tuerca', 5, 1)," + "(2,'Arandela', 10, 2)"
 						+ ",(3, 'Llave', 15, 3)" + ",(4,'Gancho', 25, 4) " + ",(5,'Macarron', 50, 5);";
 
+				// Se vuelve a ejecutar la creación de la tupla.
 				SqlTools.createTuple(queryAddTuple, conn);
-				
+			
+				// Opción para volver al menú anterior.
 			} else if (seleccionFuncion == 1) {
 				JOptionPane.showMessageDialog(null, "Se ha salido con exito");
 				break;
