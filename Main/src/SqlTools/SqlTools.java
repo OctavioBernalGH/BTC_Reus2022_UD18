@@ -54,7 +54,31 @@ public class SqlTools {
 				JOptionPane.showMessageDialog(null, e);
 				
 			}
+			
 		}
+		
+		//Create Table on Database
+				public static void createTable(String query, Connection conn) throws SQLException {
+					try {
+						//Crear Table
+						Statement st = (Statement) conn.createStatement();
+						st.executeUpdate(query);
+						JOptionPane.showMessageDialog(null, "Tabla creada");
+					}catch(SQLException e) {
+						JOptionPane.showMessageDialog(null, e);
+					}
+				}
+		//Create Tuple
+				public static void createTuple(String query, Connection conn) throws SQLException{
+					try {
+						//Crear Table
+						Statement st = (Statement) conn.createStatement();
+						st.executeUpdate(query);
+						JOptionPane.showMessageDialog(null, "Tupla creada");
+					}catch(SQLException e) {
+						JOptionPane.showMessageDialog(null, e);
+					}
+				}
 	
 
 
