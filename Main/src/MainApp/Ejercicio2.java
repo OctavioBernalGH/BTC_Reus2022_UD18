@@ -15,6 +15,7 @@ public class Ejercicio2 {
 		SqlTools.createDB("PruebaJAVA2", conn);
 		//Creamos una List donde almacenar las querys que necesitamos 
 		List<String> querysCreating = new ArrayList<String>();
+		//Definimos las querys
 		querysCreating.add("CREATE TABLE departamentos ("+
 				  "CODIGO int NOT NULL,"+
 				  "NOMBRE varchar(255) NOT NULL,"+
@@ -31,15 +32,17 @@ public class Ejercicio2 {
 				  "CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`DEPARTAMENTO`) REFERENCES `departamentos` (`CODIGO`)"+
 				") ENGINE=InnoDB DEFAULT CHARSET=utf8;");
 		
-		
+		//Recorremos las querys y las ejecutamos
 		for (String str : querysCreating) {
 			SqlTools.createTable(str, conn);
 		}
+		//Definimos la query
 		String queryAddTuple = "INSERT INTO `departamentos` VALUES "
 				+ "(14,'IT',65000),"
 				+ "(37,'Accounting',15000)"
 				+ ",(59,'Human Resources',240000)"
 				+ ",(77,'Research',55000);";
+		//Creamos las tuplas en la base de datos
 		SqlTools.createTuple(queryAddTuple, conn);
 		
 	}
