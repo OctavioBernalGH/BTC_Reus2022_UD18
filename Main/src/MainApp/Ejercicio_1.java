@@ -19,7 +19,7 @@ public class Ejercicio_1 {
 		// Bucle infinito para el menú
 		int bucle = 0;
 		while (bucle == 0) {
-
+			String bbddName = "Test";
 			// Menú de opciones mediante showOptionalDialog
 			int seleccionFuncion = JOptionPane.showOptionDialog(null, "Seleccione opcion", "Selector de opciones",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
@@ -27,9 +27,10 @@ public class Ejercicio_1 {
 
 			// Selector de opción y acción a realizar.
 			if (seleccionFuncion == 0) {
-				SqlTools.createDB("Test", conn);
+				bbddName = JOptionPane.showInputDialog("Introduce nombre de BBDD a crear");
+				SqlTools.createDB(bbddName, conn);
 			} else if (seleccionFuncion == 1) {
-				SqlTools.createDB("Test", conn);
+				SqlTools.createTable(conn, bbddName);
 			} else if (seleccionFuncion == 2) {
 				SqlTools.createDB("Test", conn);
 			} else if (seleccionFuncion == 3) {

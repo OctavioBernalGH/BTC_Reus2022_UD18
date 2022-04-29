@@ -55,6 +55,27 @@ public class SqlTools {
 				
 			}
 		}
+		
+		public static void createTable(Connection conn, String name) throws SQLException {
+			int numCol = Integer.parseInt(JOptionPane.showInputDialog("Introduce número de columnas de la tabla"));
+			String añadirTupla = "";
+			String nombreCol = "";
+			for (int i=0; i<numCol; i++) {
+				
+				int seleccionOperación = JOptionPane.showOptionDialog(null, "Seleccione opcion", "Selector de opciones",
+						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+						new Object[] { "Varchar", "Nvarchar", "int", "float", "Exit" }, " 1");
+				
+				if(seleccionOperación == 0) {
+					nombreCol = JOptionPane.showInputDialog("Introduce el nombre de la columna");
+					añadirTupla = nombreCol + " varchar(40)"; 
+				}
+			}
+			String query = "CREATE IF NOT EXISTS TABLE TEST( "+ añadirTupla+" );";
+			Statement st = (Statement) conn.createStatement();
+			st.execute("USE " + name);
+			st.executeUpdate(query);
+		}
 	
 
 
