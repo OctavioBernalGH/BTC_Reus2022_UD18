@@ -1,5 +1,10 @@
 package View;
 
+/**
+ * @author Octavio, David, Uri
+ * @date 29/04/2022
+ * @version 0.0.1
+ */
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -11,20 +16,27 @@ import SqlTools.SqlTools;
 
 public class ViewSelector {
 
+	// Atributos de clase
 	static String address;
 	static String userSQL;
 	static String password;
 
+	// Instancia de la Connection
 	public static Connection conn = null;
 
+	// Método para elegir el servidor
 	public static void selectorVistas() throws ClassNotFoundException, SQLException {
+		
+		// Bucle infinito.
 		int bucle = 0;
 		while (bucle == 0) {
 
+			// Panel de selección mediante showOptionalDialog.
 			int seleccion = JOptionPane.showOptionDialog(null, "Seleccione opcion", "Selector de opciones",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
 					new Object[] { "IP Uri", "IP David", "IP Octavio", "IP Manual", "Exit" }, " 1");
 
+			// Condicional selector de servidor.
 			if (seleccion == 0) {
 				address = "192.168.56.102";
 				userSQL = "remote";
@@ -53,12 +65,14 @@ public class ViewSelector {
 				break;
 			}
 
+			// Panel de selección de ejercicio mediante showOptionalDialog.
 			int seleccionEjercicio = JOptionPane.showOptionDialog(null, "Seleccione opcion", "Selector de opciones",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
 					new Object[] { "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4", "Ejercicio 5",
 							"Ejercicio 6", "Ejercicio 7", "Ejercicio 8", "Ejercicio 9", "Exit" },
 					" 1");
 
+			// Condicional selector de ejercicio.
 			if (seleccionEjercicio == 0) {
 				Ejercicio_1.ejecutarEjercicio1(conn);
 			} else if (seleccionEjercicio == 1) {
@@ -80,6 +94,7 @@ public class ViewSelector {
 				break;
 			}
 
+			// Cierre de conexión.
 			SqlTools.closeConnection();
 		}
 	}
