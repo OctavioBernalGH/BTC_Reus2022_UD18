@@ -1,50 +1,30 @@
 package MainApp;
 
+UD18_Ejercicio_1
+/**
+ * @author Octavio, David, Uri
+ * @date 29/04/2022
+ * @version 0.0.1
+ */
+import java.sql.SQLException;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
 import SqlTools.SqlTools;
+UD18_Testing_1
 
+import View.ViewSelector;
 
 public class MainApp {
+UD18_Ejercicio_1
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+		ViewSelector.selectorVistas();
 	
-		
-	public static void main(String[] args) {
-		
-		String address = JOptionPane.showInputDialog("Direccion del servidor");
-		String userSQL = JOptionPane.showInputDialog("Nombre del usuario");
-		String password= JOptionPane.showInputDialog("Password");
-		
 
-		SqlTools herramientasSQL = new SqlTools(address, userSQL, password);
-		
-		String Query;
-		String name;
-		
-		try {
-			SqlTools.createConnection(address, userSQL, password);
-	
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-
-			try {
-			name = JOptionPane.showInputDialog("Introduce número de DDBB a crear:");
-			Query = "CREATE DATABASE " + name;
-			Statement st = SqlTools.crearStatement(null);
-			st.execute(Query);
-			JOptionPane.showMessageDialog(null, "Se ha creado la BBDD " + name);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println(e);
-		}
-		
-		
 	}
-
 }
