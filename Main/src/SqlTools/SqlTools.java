@@ -3,11 +3,15 @@ package SqlTools;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.JOptionPane;
 
 public class SqlTools {
 	
 	static Connection mysqlConn = null;
 	
+//Open connection
 	public static Connection createConnection(String address, String userMysql, String passwordMysql) throws ClassNotFoundException {
 		
 		try {
@@ -23,12 +27,35 @@ public class SqlTools {
 		
 		return mysqlConn;
 	}
-	public void closeConnection() {
+	
+//Close connection
+	public static void closeConnection() {
 		try {
 			mysqlConn.close();
 		}catch(SQLException e) {
 			System.out.println(e);
 		}
 	}
+	
+//Create database @param: "name of database"
+		public static void createDB(String name, Connection conn) throws SQLException {
+			try {
+				//Crear base de datos
+				String query ="CREATE DATABASE IF NOT EXISTS " + name;
+				Statement st = (Statement) conn.createStatement();
+				st.executeUpdate(query);
+				JOptionPane.showMessageDialog(null, "Base de datos "+name+" creada");
+				
+				//Apuntar a la base de datos
+				query ="USE " + name;
+				st = (Statement) conn.createStatement();
+				st.executeUpdate(query);
+			}catch(SQLException e) {
+				JOptionPane.showMessageDialog(null, e);
+				
+			}
+		}
+	
+
 
 }
