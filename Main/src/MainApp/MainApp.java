@@ -6,9 +6,6 @@ import SqlTools.SqlTools;
 
 
 public class MainApp {
-	
-	
-
 	public static void main(String[] args) {
 		String address = JOptionPane.showInputDialog("Direccion del servidor");
 		String userSQL = JOptionPane.showInputDialog("Nombre del usuario");
@@ -22,4 +19,5 @@ public class MainApp {
 
 	}
 
+	
 }
