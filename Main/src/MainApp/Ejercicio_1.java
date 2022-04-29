@@ -35,23 +35,26 @@ public class Ejercicio_1 {
 				List<String> querysCreating = new ArrayList<String>();
 
 				// Definimos las querys de creación de tablas
-				querysCreating.add("CREATE TABLE departamentos (" + "CODIGO int NOT NULL,"
-						+ "NOMBRE varchar(255) NOT NULL," + "PRESUPUESTO decimal(10,0) NOT NULL,"
-						+ "PRIMARY KEY (CODIGO)" + ") ENGINE=InnoDB DEFAULT CHARSET=utf8;");
-				querysCreating.add("CREATE TABLE `empleados` (" + "`DNI` int NOT NULL,"
-						+ "`NOMBRE` varchar(255) NOT NULL," + "`APELLIDOS` varchar(255) NOT NULL,"
-						+ "`DEPARTAMENTO` int NOT NULL," + "PRIMARY KEY (`DNI`),"
-						+ "KEY `DEPARTAMENTO` (`DEPARTAMENTO`),"
-						+ "CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`DEPARTAMENTO`) REFERENCES `departamentos` (`CODIGO`)"
-						+ ") ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+				querysCreating.add(
+						"CREATE TABLE fabricantes(codigo int NOT NULL PRIMARY KEY, nombre varchar(255) NOT NULL);");
+
+				querysCreating.add(
+						"CREATE TABLE articulos(codigo int NOT NULL PRIMARY KEY, nombre varchar(255) NOT NULL, precio int NOT NULL, "
+								+ "fk_fabricantes int, FOREIGN KEY (fk_fabricantes) REFERENCES fabricantes(codigo));");
+
 				// Recorrer las query y ejecutarlas
 				for (String str : querysCreating) {
 					SqlTools.createTable(str, conn);
 				}
 
-				String queryAddTuple = "INSERT INTO `departamentos` VALUES " + "(14,'IT',65000),"
-						+ "(37,'Accounting',15000)" + ",(59,'Human Resources',240000)" + ",(77,'Research',55000);";
-				//Creamos las tuplas en la base de datos
+				String queryAddTuple = "INSERT INTO `fabricantes` VALUES " + "(1,'Fabricante_1'),"
+						+ "(2,'Fabricante_2')" + ",(3, 'Fabricante_3')" + ",(4,'Fabricante_4') "
+						+ ",(5, 'Fabricante_5');";
+				SqlTools.createTuple(queryAddTuple, conn);
+
+				queryAddTuple = "INSERT INTO `articulos` VALUES " + "(1,'Tuerca', 5, 1)," + "(2,'Arandela', 10, 2)"
+						+ ",(3, 'Llave', 15, 3)" + ",(4,'Gancho', 25, 4) " + ",(5,'Macarron', 50, 5);";
+
 				SqlTools.createTuple(queryAddTuple, conn);
 				
 			} else if (seleccionFuncion == 1) {
