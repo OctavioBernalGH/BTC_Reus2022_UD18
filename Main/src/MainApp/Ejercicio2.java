@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import SqlTools.SqlTools;
 
@@ -11,6 +13,28 @@ public class Ejercicio2 {
 	
 	public static void ejecutarEjercicio2(Connection conn) throws SQLException {
 		SqlTools.createDB("PruebaJAVA2", conn);
+		//Creamos una List donde almacenar las querys que necesitamos 
+		List<String> querys = new ArrayList<String>();
+		querys.add("CREATE TABLE departamentos ("+
+				  "CODIGO int NOT NULL,"+
+				  "NOMBRE varchar(255) NOT NULL,"+
+				  "PRESUPUESTO decimal(10,0) NOT NULL,"+
+				  "PRIMARY KEY (CODIGO)"+
+				") ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+		querys.add("CREATE TABLE `empleados` ("+
+				  "`DNI` int NOT NULL,"+
+				  "`NOMBRE` varchar(255) NOT NULL,"+
+				  "`APELLIDOS` varchar(255) NOT NULL,"+
+				  "`DEPARTAMENTO` int NOT NULL,"+
+				  "PRIMARY KEY (`DNI`),"+
+				  "KEY `DEPARTAMENTO` (`DEPARTAMENTO`),"+
+				  "CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`DEPARTAMENTO`) REFERENCES `departamentos` (`CODIGO`)"+
+				") ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+		
+		for (String str : querys) {
+			SqlTools.createTable(str, conn);
+		}
+
 	}
 
 }
