@@ -1,11 +1,18 @@
 package SqlTools;
 
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
+
+import Class.DepartamentoClass;
+import Class.EmpleadoClass;
 
 public class SqlTools {
 	
@@ -79,8 +86,76 @@ public class SqlTools {
 						JOptionPane.showMessageDialog(null, e);
 					}
 				}
-
-	
+		//TODO: Delete tuple
+				public static void deleteTuple(String query, Connection conn) throws SQLException{
+					
+				}
+		//From DB to Object EmpleadoClass
+				public static void printEmpleadotoObject(String query, Connection conn) throws SQLException{
+					try {
+						List<EmpleadoClass> lstEmpleados = new ArrayList<EmpleadoClass>();
+						
+						//Crear Table
+						Statement st = (Statement) conn.createStatement();
+						ResultSet rs = st.executeQuery(query);
+						while(rs.next()) {
+							EmpleadoClass empleado = new EmpleadoClass();
+							/*Conociendo la estructura de la base de datos, 
+							 * indicamos que campo queremos obtener con el nombre del campo
+							 */
+							empleado.setDni(rs.getString("DNI"));
+							empleado.setNombre(rs.getString("NOMBRE"));
+							empleado.setApellidos(rs.getString("APELLIDOS"));
+							empleado.setDepartamento(rs.getInt("DEPARTAMENTO"));
+							//Add to list
+							lstEmpleados.add(empleado);
+						}
+						System.out.println("___________________________________________________");
+						System.out.println("Empleados");
+						System.out.println("___________________________________________________");
+						for(EmpleadoClass ob : lstEmpleados) {
+							System.out.println("******************************");
+							System.out.println("Dni: "			+ob.dni);
+							System.out.println("Nombre: "		+ob.nombre);
+							System.out.println("Apellidos: "	+ob.apellidos);
+							System.out.println("Departamento"	+ob.departamento);
+						}
+					}catch(SQLException e) {
+						JOptionPane.showMessageDialog(null, e);
+					}
+				}
+		//From DB to Object EmpleadoClass
+				public static void printDepartamentoObject(String query, Connection conn) throws SQLException{
+					try {
+						List<DepartamentoClass> lstDepartamentos = new ArrayList<DepartamentoClass>();
+						
+						//Crear Table
+						Statement st = (Statement) conn.createStatement();
+						ResultSet rs = st.executeQuery(query);
+						while(rs.next()) {
+							DepartamentoClass departamento = new DepartamentoClass();
+							/*Conociendo la estructura de la base de datos, 
+							 * indicamos que campo queremos obtener con el nombre del campo
+							 */
+							departamento.setCodigo(rs.getInt("CODIGO"));
+							departamento.setNombre(rs.getString("NOMBRE"));
+							departamento.setPresupuesto(rs.getInt("PRESUPUESTO"));
+							//Add to list
+							lstDepartamentos.add(departamento);
+						}
+						System.out.println("___________________________________________________");
+						System.out.println("Departamentos");
+						System.out.println("___________________________________________________");
+						for(DepartamentoClass ob : lstDepartamentos) {
+							System.out.println("******************************");
+							System.out.println("Codigo: "		+ob.codigo);
+							System.out.println("Nombre: "		+ob.nombre);
+							System.out.println("Presupuesto: "	+ob.presupuesto);
+						}
+					}catch(SQLException e) {
+						JOptionPane.showMessageDialog(null, e);
+					}
+				}
 
 
 }
