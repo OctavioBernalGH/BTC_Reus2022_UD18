@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 import MainApp.Ejercicio2;
+import MainApp.Ejercicio5;
+import MainApp.Ejercicio9;
 import MainApp.Ejercicio_1;
 import SqlTools.SqlTools;
 
@@ -24,14 +26,14 @@ public class ViewSelector {
 	// Instancia de la Connection
 	public static Connection conn = null;
 
-	// Método para elegir el servidor
+	// Mï¿½todo para elegir el servidor
 	public static void selectorVistas() throws ClassNotFoundException, SQLException {
 		
 		// Bucle infinito.
 		int bucle = 0;
 		while (bucle == 0) {
 
-			// Panel de selección mediante showOptionalDialog.
+			// Panel de selecciï¿½n mediante showOptionalDialog.
 			int seleccion = JOptionPane.showOptionDialog(null, "Seleccione opcion", "Selector de opciones",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
 					new Object[] { "IP Uri", "IP David", "IP Octavio", "IP Manual", "Exit" }, " 1");
@@ -65,7 +67,7 @@ public class ViewSelector {
 				break;
 			}
 
-			// Panel de selección de ejercicio mediante showOptionalDialog.
+			// Panel de selecciï¿½n de ejercicio mediante showOptionalDialog.
 			int seleccionEjercicio = JOptionPane.showOptionDialog(null, "Seleccione opcion", "Selector de opciones",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
 					new Object[] { "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4", "Ejercicio 5",
@@ -82,7 +84,7 @@ public class ViewSelector {
 			} else if (seleccionEjercicio == 3) {
 				Ejercicio2.ejecutarEjercicio2(conn);
 			} else if (seleccionEjercicio == 4) {
-				Ejercicio2.ejecutarEjercicio2(conn);
+				Ejercicio5.ejecutarEjercicio5(conn);
 			} else if (seleccionEjercicio == 5) {
 				Ejercicio2.ejecutarEjercicio2(conn);
 			} else if (seleccionEjercicio == 6) {
@@ -90,11 +92,13 @@ public class ViewSelector {
 			} else if (seleccionEjercicio == 7) {
 				Ejercicio2.ejecutarEjercicio2(conn);
 			} else if (seleccionEjercicio == 8) {
+				Ejercicio9.ejecutarEjercicio9(conn);
+			}else if (seleccionEjercicio == 9) {
 				JOptionPane.showMessageDialog(null, "Se ha salido con exito");
 				break;
 			}
 
-			// Cierre de conexión.
+			// Cierre de conexiï¿½n.
 			SqlTools.closeConnection();
 		}
 	}
