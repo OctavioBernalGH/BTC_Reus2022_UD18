@@ -12,7 +12,7 @@ import SqlTools.SqlTools;
 public class Ejercicio2 {
 	
 	public static void ejecutarEjercicio2(Connection conn) throws SQLException {
-		SqlTools.createDB("PruebaJAVA2", conn);
+		SqlTools.createDB("Ejercicio2", conn);
 		//Creamos una List donde almacenar las querys que necesitamos 
 		List<String> querysCreating = new ArrayList<String>();
 		//Definimos las querys
@@ -56,7 +56,7 @@ public class Ejercicio2 {
 				+ "(845657233,'Luis','López',14),"
 				+ "(845657245,'Elizabeth','Doe',14),"
 				+ "(845657246,'Kumar','Swamy',14),"
-				+ "(845657266,'Jose','Pérez',77)";;
+				+ "(845657266,'Jose','Pérez',77)";
 		//Creamos las tuplas en la base de datos
 		SqlTools.createTuple(queryAddTuple, conn);
 		SqlTools.createTuple(queryAddTuple2, conn);

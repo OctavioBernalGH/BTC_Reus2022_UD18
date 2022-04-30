@@ -12,6 +12,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import Class.DepartamentoClass;
+import Class.DespachoClass;
+import Class.DirectorClass;
 import Class.EmpleadoClass;
 
 public class SqlTools {
@@ -124,7 +126,7 @@ public class SqlTools {
 						JOptionPane.showMessageDialog(null, e);
 					}
 				}
-		//From DB to Object EmpleadoClass
+		//From DB to Object DepartamentoClass
 				public static void printDepartamentoObject(String query, Connection conn) throws SQLException{
 					try {
 						List<DepartamentoClass> lstDepartamentos = new ArrayList<DepartamentoClass>();
@@ -156,6 +158,68 @@ public class SqlTools {
 						JOptionPane.showMessageDialog(null, e);
 					}
 				}
-
-
+				//From DB to Object DirectorClass
+				public static void printDirectorObject(String query, Connection conn) throws SQLException{
+					try {
+						List<DirectorClass> lstDirectores = new ArrayList<DirectorClass>();
+						
+						//Crear Table
+						Statement st = (Statement) conn.createStatement();
+						ResultSet rs = st.executeQuery(query);
+						while(rs.next()) {
+							DirectorClass director = new DirectorClass();
+							/*Conociendo la estructura de la base de datos, 
+							 * indicamos que campo queremos obtener con la posicion de este
+							 */
+							director.setDni(rs.getString(1));
+							director.setNomApels(rs.getString(2));
+							director.setDniJefe(rs.getString(3));
+							director.setDespacho(rs.getInt(4));
+							//Add to list
+							lstDirectores.add(director);
+						}
+						System.out.println("___________________________________________________");
+						System.out.println("Directores");
+						System.out.println("___________________________________________________");
+						for(DirectorClass ob : lstDirectores) {
+							System.out.println("******************************");
+							System.out.println("Dni: "					+ob.dni);
+							System.out.println("Nombre y apellidos: "	+ob.nomApels);
+							System.out.println("Dni del jefe: "			+ob.dniJefe);
+							System.out.println("Despacho: "				+ob.dniJefe);
+						}
+					}catch(SQLException e) {
+						JOptionPane.showMessageDialog(null, e);
+					}
+				}
+				//From DB to Object DespachorClass
+				public static void printDespachoObject(String query, Connection conn) throws SQLException{
+					try {
+						List<DespachoClass> lstDespachos = new ArrayList<DespachoClass>();
+						
+						//Crear Table
+						Statement st = (Statement) conn.createStatement();
+						ResultSet rs = st.executeQuery(query);
+						while(rs.next()) {
+							DespachoClass despacho = new DespachoClass();
+							/*Conociendo la estructura de la base de datos, 
+							 * indicamos que campo queremos obtener con la posicion de este
+							 */
+							despacho.setNumero(rs.getInt(1));
+							despacho.setCapacidad(rs.getInt(2));
+							//Add to list
+							lstDespachos.add(despacho);
+						}
+						System.out.println("___________________________________________________");
+						System.out.println("Despachos");
+						System.out.println("___________________________________________________");
+						for(DespachoClass ob : lstDespachos) {
+							System.out.println("******************************");
+							System.out.println("Número: "		+ob.numero);
+							System.out.println("Capacidad: "	+ob.capacidad);
+						}
+					}catch(SQLException e) {
+						JOptionPane.showMessageDialog(null, e);
+					}
+				}
 }
