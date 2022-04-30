@@ -57,14 +57,28 @@ public class Ejercicio9 {
 		String queryAddTuple3 = "INSERT INTO `EQUIPOS` (`NUMSERIE`, `NOMBRE`, `COD_FACULTAD_E`) VALUES "
 				+ "('11', 'team1', '1'),"
 				+ "('12', 'team2', '2');";
-		String queryAddTuple4 = "INSERT INTO `INVESTIGADORES` (`DNI`, `NOMBRE_APELLIDOS`, `COD_FACULTAD_I`) VALUES "
-				+ "('122112', 'Ingrid', '1'),"
-				+ "('3121', 'eva', '2');";
+		String queryAddTuple4 = "INSERT INTO `RESERVA` (`DNI_RES`, `NUMSERIE_RES`, `COMIENZO`, `FIN`) VALUES "
+				+ "('122112', '11', '2022/03/10', '2022/04/10'),"
+				+ "('3121', '12', '2022/03/10', '2022/04/10');";
+				
 		//Creamos las tuplas en la base de datos
 		SqlTools.createTuple(queryAddTuple, conn);
 		SqlTools.createTuple(queryAddTuple2, conn);
 		SqlTools.createTuple(queryAddTuple3, conn);
 		SqlTools.createTuple(queryAddTuple4, conn);
+		//Print Facultad
+		String querySelectAllFacultad = "SELECT * FROM FACULTAD";
+		SqlTools.printFacultadObject(querySelectAllFacultad, conn);
+		
+		//Print Investigadores
+		String querySelectAllInvestigadores = "SELECT * FROM INVESTIGADORES";
+		SqlTools.printInvestigadorObject(querySelectAllInvestigadores, conn);
+		//Print equipos
+		String querySelectAllEquipos = "SELECT * FROM EQUIPOS";
+		SqlTools.printEquiposObject(querySelectAllEquipos, conn);
+		//Print Reservas
+		String querySelectAllReservas = "SELECT * FROM RESERVA";
+		SqlTools.printReservaObject(querySelectAllReservas, conn);
 		
 	}
 	

@@ -1,16 +1,16 @@
 package Class;
 
-public class Facultad {
+public class FacultadClass {
 	
 	public int codigo;
 	public String nombre;
 	
 //Empty constructor
-	public Facultad() {
+	public FacultadClass() {
 		
 	}
 //Constructor with params
-	public Facultad(int codigo, String nombre) {
+	public FacultadClass(int codigo, String nombre) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 	}

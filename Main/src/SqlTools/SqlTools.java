@@ -15,6 +15,10 @@ import Class.DepartamentoClass;
 import Class.DespachoClass;
 import Class.DirectorClass;
 import Class.EmpleadoClass;
+import Class.EquipoClass;
+import Class.FacultadClass;
+import Class.InvestigadorClass;
+import Class.ReservaClass;
 
 public class SqlTools {
 	
@@ -217,6 +221,137 @@ public class SqlTools {
 							System.out.println("******************************");
 							System.out.println("Número: "		+ob.numero);
 							System.out.println("Capacidad: "	+ob.capacidad);
+						}
+					}catch(SQLException e) {
+						JOptionPane.showMessageDialog(null, e);
+					}
+				}
+				//From DB to Object ReservaClass
+				public static void printReservaObject(String query, Connection conn) throws SQLException{
+					try {
+						List<ReservaClass> lstReservas = new ArrayList<ReservaClass>();
+						
+						//Crear Table
+						Statement st = (Statement) conn.createStatement();
+						ResultSet rs = st.executeQuery(query);
+						while(rs.next()) {
+							ReservaClass reserva = new ReservaClass();
+							/*Conociendo la estructura de la base de datos, 
+							 * indicamos que campo queremos obtener con la posicion de este
+							 */
+							reserva.setDni(rs.getString(1));
+							reserva.setNumSerie(rs.getString(2));
+							reserva.setComienzo(rs.getDate(3));
+							reserva.setFin(rs.getDate(4));
+							//Add to list
+							lstReservas.add(reserva);
+						}
+						System.out.println("___________________________________________________");
+						System.out.println("Reserva");
+						System.out.println("___________________________________________________");
+						for(ReservaClass ob : lstReservas) {
+							System.out.println("******************************");
+							System.out.println("Dni: "			+ob.dni);
+							System.out.println("Num Serie: "	+ob.numSerie);
+							System.out.println("Comienzo: "		+ob.comienzo);
+							System.out.println("Fin: "			+ob.fin);
+						}
+					}catch(SQLException e) {
+						JOptionPane.showMessageDialog(null, e);
+					}
+				}
+				//From DB to Object FacultadClass
+				public static void printFacultadObject(String query, Connection conn) throws SQLException{
+					try {
+						List<FacultadClass> lstFacultades = new ArrayList<FacultadClass>();
+						
+						//Crear Table
+						Statement st = (Statement) conn.createStatement();
+						ResultSet rs = st.executeQuery(query);
+						while(rs.next()) {
+							FacultadClass facultad = new FacultadClass();
+							/*Conociendo la estructura de la base de datos, 
+							 * indicamos que campo queremos obtener con la posicion de este
+							 */
+							facultad.setCodigo(rs.getInt(1));
+							facultad.setNombre(rs.getString(2));
+							
+							//Add to list
+							lstFacultades.add(facultad);
+						}
+						System.out.println("___________________________________________________");
+						System.out.println("Facultad");
+						System.out.println("___________________________________________________");
+						for(FacultadClass ob : lstFacultades) {
+							System.out.println("******************************");
+							System.out.println("Codigo: "			+ob.codigo);
+							System.out.println("Nombre: "			+ob.nombre);
+						}
+					}catch(SQLException e) {
+						JOptionPane.showMessageDialog(null, e);
+					}
+				}
+				//From DB to Object InvestigadoresClass
+				public static void printInvestigadorObject(String query, Connection conn) throws SQLException{
+					try {
+						List<InvestigadorClass> lstInvestigadores = new ArrayList<InvestigadorClass>();
+						
+						//Crear Table
+						Statement st = (Statement) conn.createStatement();
+						ResultSet rs = st.executeQuery(query);
+						while(rs.next()) {
+							InvestigadorClass investigador = new InvestigadorClass();
+							/*Conociendo la estructura de la base de datos, 
+							 * indicamos que campo queremos obtener con la posicion de este
+							 */
+							investigador.setDni(rs.getString(1));
+							investigador.setNomApels(rs.getString(2));
+							investigador.setFacultad(rs.getInt(3));
+							
+							//Add to list
+							lstInvestigadores.add(investigador);
+						}
+						System.out.println("___________________________________________________");
+						System.out.println("Investigador");
+						System.out.println("___________________________________________________");
+						for(InvestigadorClass ob : lstInvestigadores) {
+							System.out.println("******************************");
+							System.out.println("Dni: "				+ob.dni);
+							System.out.println("Nombre: "			+ob.nomApels);
+							System.out.println("Facultad: "			+ob.facultad);
+						}
+					}catch(SQLException e) {
+						JOptionPane.showMessageDialog(null, e);
+					}
+				}
+				//From DB to Object EquipoClass
+				public static void printEquiposObject(String query, Connection conn) throws SQLException{
+					try {
+						List<EquipoClass> lstEquipo = new ArrayList<EquipoClass>();
+						
+						//Crear Table
+						Statement st = (Statement) conn.createStatement();
+						ResultSet rs = st.executeQuery(query);
+						while(rs.next()) {
+							EquipoClass equipo = new EquipoClass();
+							/*Conociendo la estructura de la base de datos, 
+							 * indicamos que campo queremos obtener con la posicion de este
+							 */
+							equipo.setNumSerie(rs.getString(1));
+							equipo.setNombre(rs.getString(2));
+							equipo.setFacultad(rs.getInt(3));
+							
+							//Add to list
+							lstEquipo.add(equipo);
+						}
+						System.out.println("___________________________________________________");
+						System.out.println("Equipo");
+						System.out.println("___________________________________________________");
+						for(EquipoClass ob : lstEquipo) {
+							System.out.println("******************************");
+							System.out.println("NumSerie: "			+ob.numSerie);
+							System.out.println("Nombre: "			+ob.nombre);
+							System.out.println("Facultad: "			+ob.facultad);
 						}
 					}catch(SQLException e) {
 						JOptionPane.showMessageDialog(null, e);
