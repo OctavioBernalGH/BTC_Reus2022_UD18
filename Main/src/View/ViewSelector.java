@@ -68,7 +68,7 @@ public class ViewSelector {
 
 			// Condicional selector de ejercicio.
 			if (seleccionEjercicio == 0) {
-				Ejercicio_1.ejecutarEjercicio1(conn);
+				Ejercicio1.ejecutarEjercicio1(conn);
 			} else if (seleccionEjercicio == 1) {
 				Ejercicio2.ejecutarEjercicio2(conn);
 			} else if (seleccionEjercicio == 2) {
@@ -94,5 +94,4 @@ public class ViewSelector {
 			SqlTools.closeConnection();
 		}
 	}
-
 }
