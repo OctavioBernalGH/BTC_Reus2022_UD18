@@ -48,12 +48,12 @@ public class Ejercicio4 {
 		SqlTools.createTuple(queryAddTuple, conn);
 		SqlTools.createTuple(queryAddTuple2, conn);
 		
-		//Print Empleados
-		String querySelectAllEmpleados = "SELECT * FROM peliculas";
-		SqlTools.printAlmacenesObject(querySelectAllEmpleados, conn);
+		//Print Peliculas
+		String querySelectAllPeliculas = "SELECT * FROM peliculas";
+		SqlTools.printAlmacenesObject(querySelectAllPeliculas, conn);
 		
-		//Print Departamentos
-		String querySelectAllDepartamentos = "SELECT * FROM salas";
-		SqlTools.printCajasObject(querySelectAllDepartamentos, conn);
+		//Print Salas
+		String querySelectAllSalas = "SELECT * FROM salas";
+		SqlTools.printCajasObject(querySelectAllSalas, conn);
 	}
 }
