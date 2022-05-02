@@ -1,13 +1,23 @@
 package MainApp;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.mysql.cj.MysqlConnection;
+import com.mysql.cj.x.protobuf.MysqlxConnection.Close;
+
+
 import SqlTools.SqlTools;
 
 public class Ejercicio3 {
+
 	public static void ejecutarEjercicio3(Connection conn) throws SQLException {
 		SqlTools.createDB("Ejercicio3", conn);
 		//Creamos una List donde almacenar las querys que necesitamos 
@@ -58,4 +68,5 @@ public class Ejercicio3 {
 		String querySelectAllCajas = "SELECT * FROM cajas";
 		SqlTools.printCajasObject(querySelectAllCajas, conn);
 	}
+
 }

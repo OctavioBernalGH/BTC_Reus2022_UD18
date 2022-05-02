@@ -8,6 +8,7 @@ import java.util.List;
 import SqlTools.SqlTools;
 
 public class MainApp {
+
 	public static void ejecutarEjercicio3(Connection conn) throws SQLException {
 		SqlTools.createDB("Ejercicio3", conn);
 		//Creamos una List donde almacenar las querys que necesitamos 
@@ -32,6 +33,17 @@ public class MainApp {
 		//Recorremos las querys y las ejecutamos
 		for (String str : querysCreating) {
 			SqlTools.createTable(str, conn);
+
+	public static void main(String[] args) {
+		String address = JOptionPane.showInputDialog("Direccion del servidor");
+		String userSQL = JOptionPane.showInputDialog("Nombre del usuario");
+		String password= JOptionPane.showInputDialog("Password");
+	
+		try {
+			SqlTools.createConnection(address, userSQL, password);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
 		}
 		//Definimos las query para insertar tuplas
 		String queryAddTuple = "INSERT INTO `almacenes` VALUES "
@@ -58,4 +70,10 @@ public class MainApp {
 		String querySelectAllDepartamentos = "SELECT * FROM cajas";
 		SqlTools.printCajasObject(querySelectAllDepartamentos, conn);
 	}
+
 }
+
+
+	
+}
+
