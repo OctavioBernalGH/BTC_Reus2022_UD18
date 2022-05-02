@@ -24,6 +24,7 @@ import SqlTools.SqlTools;
 import SqlTools.SqlTools;
 
 import MainApp.Ejercicio3;
+import MainApp.Ejercicio4;
 
 
 public class ViewSelector {
@@ -103,7 +104,7 @@ public class ViewSelector {
 			} else if (seleccionEjercicio == 7) {
 				Ejercicio2.ejecutarEjercicio2(conn);
 
-				Ejercicio1.ejecutarEjercicio_1(conn);
+				Ejercicio_1.ejecutarEjercicio1(conn);
 			} else if (seleccionEjercicio == 1) {
 				Ejercicio2.ejecutarEjercicio2(conn);
 			} else if (seleccionEjercicio == 2) {
@@ -118,7 +119,6 @@ public class ViewSelector {
 				Ejercicio7.ejecutarEjercicio7(conn);
 			} else if (seleccionEjercicio == 7) {
 				Ejercicio8.ejecutarEjercicio8(conn);
-
 			} else if (seleccionEjercicio == 8) {
 				Ejercicio9.ejecutarEjercicio9(conn);
 			}else if (seleccionEjercicio == 9) {
