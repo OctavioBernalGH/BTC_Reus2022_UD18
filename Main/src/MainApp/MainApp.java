@@ -1,6 +1,11 @@
 package MainApp;
 
 
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+
 /**
  * @author Octavio, David, Uri
  * @date 29/04/2022
@@ -13,12 +18,25 @@ import javax.swing.JOptionPane;
 import SqlTools.SqlTools;
 import View.ViewSelector;
 
+
 public class MainApp {
 	
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
+
+
+public class MainApp {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		ViewSelector.selectorVistas();
+
+
 		ViewSelector.selectorVistas();
 		
 	}
+
 }
+
+
+}
+
