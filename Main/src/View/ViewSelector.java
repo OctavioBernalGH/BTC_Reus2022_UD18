@@ -96,6 +96,3 @@ public class ViewSelector {
 	}
 
 }
-public class ViewSelector {
-
-}
