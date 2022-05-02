@@ -1,12 +1,30 @@
 package View;
+
+
+/**
+ * @author Octavio, David, Uri
+ * @date 29/04/2022
+ * @version 0.0.1
+ */
+
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+
+import MainApp.Ejercicio2;
+import MainApp.Ejercicio5;
+import MainApp.Ejercicio9;
+import MainApp.Ejercicio_1;
+import SqlTools.SqlTools;
+
+
 import SqlTools.SqlTools;
 
 import MainApp.Ejercicio3;
+
 
 public class ViewSelector {
 
@@ -68,6 +86,23 @@ public class ViewSelector {
 
 			// Condicional selector de ejercicio.
 			if (seleccionEjercicio == 0) {
+
+				Ejercicio_1.ejecutarEjercicio1(conn);
+			} else if (seleccionEjercicio == 1) {
+				Ejercicio2.ejecutarEjercicio2(conn);
+			} else if (seleccionEjercicio == 2) {
+				Ejercicio2.ejecutarEjercicio2(conn);
+			} else if (seleccionEjercicio == 3) {
+				Ejercicio2.ejecutarEjercicio2(conn);
+			} else if (seleccionEjercicio == 4) {
+				Ejercicio5.ejecutarEjercicio5(conn);
+			} else if (seleccionEjercicio == 5) {
+				Ejercicio2.ejecutarEjercicio2(conn);
+			} else if (seleccionEjercicio == 6) {
+				Ejercicio2.ejecutarEjercicio2(conn);
+			} else if (seleccionEjercicio == 7) {
+				Ejercicio2.ejecutarEjercicio2(conn);
+
 				Ejercicio1.ejecutarEjercicio_1(conn);
 			} else if (seleccionEjercicio == 1) {
 				Ejercicio2.ejecutarEjercicio2(conn);
@@ -83,6 +118,7 @@ public class ViewSelector {
 				Ejercicio7.ejecutarEjercicio7(conn);
 			} else if (seleccionEjercicio == 7) {
 				Ejercicio8.ejecutarEjercicio8(conn);
+
 			} else if (seleccionEjercicio == 8) {
 				Ejercicio9.ejecutarEjercicio9(conn);
 			}else if (seleccionEjercicio == 9) {
@@ -94,4 +130,9 @@ public class ViewSelector {
 			SqlTools.closeConnection();
 		}
 	}
+
+
 }
+
+}
+
