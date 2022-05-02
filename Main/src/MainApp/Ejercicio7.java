@@ -9,7 +9,7 @@ import SqlTools.SqlTools;
 import SqlTools.SqlTools;
 
 public class Ejercicio7 {
-	public static void ejecutarEjercicio6(Connection conn) throws SQLException {
+	public static void ejecutarEjercicio7(Connection conn) throws SQLException {
 		SqlTools.createDB("Ejercicio7", conn);
 		//Creamos una List donde almacenar las querys que necesitamos 
 		List<String> querysCreating = new ArrayList<String>();
