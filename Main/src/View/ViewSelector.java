@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 import MainApp.Ejercicio2;
 import MainApp.Ejercicio5;
 import MainApp.Ejercicio6;
+import MainApp.Ejercicio7;
+import MainApp.Ejercicio8;
 import MainApp.Ejercicio9;
 import MainApp.Ejercicio_1;
 import SqlTools.SqlTools;
@@ -40,7 +42,7 @@ public class ViewSelector {
 
 	// M�todo para elegir el servidor
 	public static void selectorVistas() throws ClassNotFoundException, SQLException {
-		
+
 		// Bucle infinito.
 		int bucle = 0;
 		while (bucle == 0) {
@@ -134,6 +136,3 @@ public class ViewSelector {
 
 
 }
-
-}
-
